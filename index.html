@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanecer Animado</title>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+    <!-- 
+    ========================================
+    ESTRUCTURA DEL AMANECER ANIMADO
+    ========================================
+    Cada grupo de divs anidados crea semicircunferencias concéntricas
+    con colores progresivos que forman el arcoíris del amanecer
+    -->
+    
+    <!-- CAPA 1: Efecto de desenfoque de fondo -->
+    <div style="--i:0;" class="blur root">
+        <div style="--i:1;">
+            <div style="--i:2;">
+                <div style="--i:3;">
+                    <div style="--i:4;">
+                        <div style="--i:5;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CAPA 2: Semicircunferencias principales del arcoíris -->
+    <div style="--i:0;" class="root">
+        <div style="--i:1;">
+            <div style="--i:2;">
+                <div style="--i:3;">
+                    <div style="--i:4;">
+                        <div style="--i:5;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- CAPA 3: Tubos interiores con efecto luminoso -->
+    <div style="--i:0;" class="tube root">
+        <div style="--i:1;">
+            <div style="--i:2;">
+                <div style="--i:3;">
+                    <div style="--i:4;">
+                        <div style="--i:5;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ONDAS LÍQUIDAS: Simulan el agua del amanecer -->
+    <p>
+        <span style="--i:0;"></span>
+        <span style="--i:1;"></span>
+        <span style="--i:2;"></span>
+        <span style="--i:3;"></span>
+        <span style="--i:4;"></span>
+    </p>
+</body>
+</html>

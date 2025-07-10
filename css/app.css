@@ -1,0 +1,193 @@
+/* 
+========================================
+AMANECER ANIMADO - CONFIGURACIÓN CSS
+========================================
+Este archivo crea un amanecer animado usando:
+- Semicircunferencias concéntricas para el arcoíris
+- Sistema de colores HSL progresivos
+- Ondas líquidas animadas
+- Efectos de desenfoque para profundidad
+*/
+
+/* ========================================
+   RESETEO Y CONFIGURACIÓN BASE
+======================================== */
+* {
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+  perspective: 33.33vmin;
+  overflow: hidden;
+  background: #16162c; /* Fondo azul oscuro nocturno */
+}
+
+/* ========================================
+   SISTEMA DE POSICIONAMIENTO
+======================================== */
+/* Todos los elementos se superponen en el mismo lugar del grid */
+div,
+p {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* ========================================
+   SEMICIRCUNFERENCIAS DEL ARCOÍRIS
+======================================== */
+/* Configuración base para todos los divs que forman el arcoíris */
+div {
+  --h: 305; /* Rosa intenso exterior (#f790b2) */
+  
+  /* Borde superior semicircular */
+  border: 1vmin solid hsl(var(--h), 100%, var(--l, 65%)); /* Oscuro e intenso */
+  border-left-color: transparent;   /* Oculta lado izquierdo */
+  border-bottom-color: transparent; /* Oculta parte inferior */
+  border-radius: 50%;
+  
+  /* Tamaño y espaciado */
+  margin: 0.83vmin;
+  min-height: 5vmin;
+  min-width: 5vmin;
+  max-width: 33.33vmin;
+  
+  /* Rotación para posicionar correctamente el semicírculo */
+  --prefix-transform: rotateZ(-0.125turn); /* -45 grados */
+  transform: var(--prefix-transform);
+}
+
+/* PROGRESIÓN DE COLORES DEL ARCOÍRIS - INVERTIDA */
+/* Cada nivel anidado se vuelve más claro hacia el interior */
+div > div {
+  --prefix-transform: ; /* Elimina rotación en niveles internos */
+  --h: 310; /* Rosa fuerte */
+  --l: 70%; /* Un poco más claro */
+}
+
+div > div > div {
+  --h: 315; /* Rosa intenso */
+  --l: 75%; /* Más claro */
+}
+
+div > div > div > div {
+  --h: 320; /* Rosa medio */
+  --l: 80%; /* Más claro aún */
+}
+
+div > div > div > div > div {
+  --h: 325; /* Rosa claro */
+  --l: 85%; /* Bastante claro */
+}
+
+div > div > div > div > div > div {
+  --h: 330; /* Rosa muy claro interior (#ffc4d6) */
+  --l: 90%; /* El más claro */
+}
+
+/* ========================================
+   EFECTOS VISUALES ESPECIALES
+======================================== */
+/* Capa de desenfoque para crear profundidad */
+.blur {
+  filter: blur(6px);
+}
+
+/* Tubos interiores con efecto luminoso */
+.tube,
+.tube div {
+  border-style: solid;
+  --l: 92%; /* Mayor brillo para efecto luminoso en tonos rosa */
+  border-width: 0.17vmin; /* Bordes más delgados */
+  margin: 1.68vmin; /* Mayor separación */
+  min-height: 4.25vmin;
+  min-width: 4.25vmin;
+}
+
+.tube {
+  filter: blur(2px); /* Desenfoque suave */
+}
+
+/* ========================================
+   ONDAS LÍQUIDAS ANIMADAS
+======================================== */
+/* Contenedor de las ondas */
+p {
+  width: 33.33vmin;
+  height: 33.33vmin;
+  padding-top: 17.5vmin; /* Posiciona las ondas debajo del arcoíris */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Cada línea de onda individual */
+p span {
+  margin: 0 auto 0.92vmin;
+  display: block;
+  height: 0.92vmin;
+  width: 72%; /* Ancho base */
+  
+  /* Color y efecto cian */
+  color: hsl(173, 100%, 50%);
+  background: linear-gradient(
+    to bottom,
+    currentColor,
+    currentColor,
+    currentColor,
+    hsl(173, 100%, 76%), /* Tono más claro en el centro */
+    currentColor,
+    currentColor,
+    currentColor
+  );
+  
+  /* Forma y efectos */
+  border-left: 0.33vmin solid currentColor;
+  border-right: 0.33vmin solid currentColor;
+  border-radius: 0.5vmin;
+  filter: drop-shadow(0px 0px 1.67px currentColor); /* Resplandor */
+  
+  /* Animación ondulante */
+  animation: wavy 6000ms calc(var(--i) * -4400ms - 3000ms) infinite alternate ease-in-out;
+}
+
+/* PROGRESIÓN DE TAMAÑOS DE LAS ONDAS */
+/* Cada onda sucesiva es más pequeña, creando perspectiva */
+span + span {
+  width: 71%;
+}
+
+span + span + span {
+  width: 67%;
+}
+
+span + span + span + span {
+  width: 60%;
+}
+
+span + span + span + span + span {
+  width: 50%;
+}
+
+span + span + span + span + span + span {
+  width: 35%;
+}
+
+/* ========================================
+   ANIMACIONES
+======================================== */
+/* Movimiento suave de las ondas de lado a lado */
+@keyframes wavy {
+  0% {
+    transform: translateX(-6%);
+  }
+  100% {
+    transform: translateX(6%);
+  }
+}
