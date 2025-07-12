@@ -24,7 +24,7 @@ body {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   place-items: center;
-  perspective: 33.33vmin;
+  perspective: 26.66vmin;
   overflow: hidden;
   background: #16162c; /* Fondo azul oscuro nocturno */
 }
@@ -56,7 +56,7 @@ div {
   margin: 0.83vmin;
   min-height: 5vmin;
   min-width: 5vmin;
-  max-width: 33.33vmin;
+  max-width: 26.66vmin;
   
   /* Rotación para posicionar correctamente el semicírculo */
   --prefix-transform: rotateZ(-0.125turn); /* -45 grados */
@@ -119,9 +119,9 @@ div > div > div > div > div > div {
 ======================================== */
 /* Contenedor de las ondas */
 p {
-  width: 33.33vmin;
-  height: 33.33vmin;
-  padding-top: 17.5vmin; /* Posiciona las ondas debajo del arcoíris */
+  width: 26.66vmin;
+  height: 26.66vmin;
+  padding-top: 14vmin; /* Posiciona las ondas debajo del arcoíris */
   display: flex;
   flex-direction: column;
   align-items: center;
